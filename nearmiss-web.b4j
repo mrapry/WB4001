@@ -1,0 +1,59 @@
+﻿Version=5.9
+AppType=StandardJava
+NumberOfModules=5
+Module1=clsLogin
+Module2=clsService
+Module3=clsDashboard
+Module4=clsMonitoring
+Module5=clsSecman
+Build1=Default,b4j.example
+NumberOfFiles=0
+NumberOfLibraries=9
+Library1=jcore
+Library2=jserver
+Library3=jokhttputils2_nonui
+Library4=okhttp
+Library5=json
+Library6=jhttputils2
+Library7=jstringfunctions
+Library8=jokhttputils2
+Library9=jstringutils
+@EndOfDesignText@
+'Non-UI application (console / server application)
+#Region Project Attributes 
+	#CommandLineArgs:
+	#MergeLibraries: True 
+#End Region
+
+Sub Process_Globals
+	Dim srvr As Server
+	Dim base_url As String = "http://localhost:8081/"
+End Sub
+
+Sub AppStart (Args() As String)
+	' DEKLARASI PORT HANYA UNTUK TESTING
+	Args = Array As String(8082)
+	
+	'SETTING PORT 
+	If Args.Length<1 Then
+		Log( " ")
+		Log("PORT BELUM DISETTING")
+		Log( " ")
+		ExitApplication
+	End If
+	
+	srvr.Initialize("")
+	srvr.Port =  Args(0)
+	srvr.AddWebSocket("/login","clsLogin")
+	srvr.AddWebSocket("/dashboard","clsDashboard")
+	srvr.AddWebSocket("/monitoring","clsMonitoring")
+	srvr.AddWebSocket("/secman","clsSecman")
+	srvr.Start
+	
+	StartMessageLoop
+End Sub
+
+'Return true to allow the default exceptions handler to handle the uncaught exception.
+Sub Application_Error (Error As Exception, StackTrace As String) As Boolean
+	Return True
+End Sub
