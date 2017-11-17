@@ -55,9 +55,9 @@ public boolean isSingleton() {
 	}
 public static RemoteObject __c = RemoteObject.declareNull("anywheresoftware.b4a.keywords.Common");
 public static RemoteObject _srvr = RemoteObject.declareNull("anywheresoftware.b4j.object.ServerWrapper");
-public static RemoteObject _base_url = RemoteObject.createImmutable("");
+public static RemoteObject _url_api = RemoteObject.createImmutable("");
 public static RemoteObject _httputils2service = RemoteObject.declareNull("b4j.example.httputils2service");
   public Object[] GetGlobals() {
-		return new Object[] {"base_url",main._base_url,"HttpUtils2Service",main._httputils2service,"srvr",main._srvr};
+		return new Object[] {"HttpUtils2Service",main._httputils2service,"srvr",main._srvr,"url_api",main._url_api};
 }
 }

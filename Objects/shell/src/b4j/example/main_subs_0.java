@@ -8,17 +8,17 @@ public class main_subs_0 {
 
 public static RemoteObject  _application_error(RemoteObject _error,RemoteObject _stacktrace) throws Exception{
 try {
-		Debug.PushSubsStack("Application_Error (main) ","main",0,main.ba,main.mostCurrent,36);
+		Debug.PushSubsStack("Application_Error (main) ","main",0,main.ba,main.mostCurrent,39);
 if (RapidSub.canDelegate("application_error")) return b4j.example.main.remoteMe.runUserSub(false, "main","application_error", _error, _stacktrace);
 Debug.locals.put("Error", _error);
 Debug.locals.put("StackTrace", _stacktrace);
- BA.debugLineNum = 36;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
-Debug.ShouldStop(8);
- BA.debugLineNum = 37;BA.debugLine="Return True";
-Debug.ShouldStop(16);
+ BA.debugLineNum = 39;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";
+Debug.ShouldStop(64);
+ BA.debugLineNum = 40;BA.debugLine="Return True";
+Debug.ShouldStop(128);
 if (true) return main.__c.getField(true,"True");
- BA.debugLineNum = 38;BA.debugLine="End Sub";
-Debug.ShouldStop(32);
+ BA.debugLineNum = 41;BA.debugLine="End Sub";
+Debug.ShouldStop(256);
 return RemoteObject.createImmutable(false);
 }
 catch (Exception e) {
@@ -71,14 +71,20 @@ main._srvr.runVoidMethod ("AddWebSocket",(Object)(BA.ObjectToString("/monitoring
  BA.debugLineNum = 29;BA.debugLine="srvr.AddWebSocket(\"/secman\",\"clsSecman\")";
 Debug.ShouldStop(268435456);
 main._srvr.runVoidMethod ("AddWebSocket",(Object)(BA.ObjectToString("/secman")),(Object)(RemoteObject.createImmutable("clsSecman")));
- BA.debugLineNum = 30;BA.debugLine="srvr.Start";
+ BA.debugLineNum = 30;BA.debugLine="srvr.AddWebSocket(\"/main\",\"clsMain\")";
 Debug.ShouldStop(536870912);
+main._srvr.runVoidMethod ("AddWebSocket",(Object)(BA.ObjectToString("/main")),(Object)(RemoteObject.createImmutable("clsMain")));
+ BA.debugLineNum = 31;BA.debugLine="srvr.Start";
+Debug.ShouldStop(1073741824);
 main._srvr.runVoidMethod ("Start");
- BA.debugLineNum = 32;BA.debugLine="StartMessageLoop";
-Debug.ShouldStop(-2147483648);
-main.__c.runVoidMethod ("StartMessageLoop",main.ba);
- BA.debugLineNum = 33;BA.debugLine="End Sub";
+ BA.debugLineNum = 33;BA.debugLine="Log(\"Server Started at port \"& srvr.Port)";
 Debug.ShouldStop(1);
+main.__c.runVoidMethod ("Log",(Object)(RemoteObject.concat(RemoteObject.createImmutable("Server Started at port "),main._srvr.runMethod(true,"getPort"))));
+ BA.debugLineNum = 35;BA.debugLine="StartMessageLoop";
+Debug.ShouldStop(4);
+main.__c.runVoidMethod ("StartMessageLoop",main.ba);
+ BA.debugLineNum = 36;BA.debugLine="End Sub";
+Debug.ShouldStop(8);
 return RemoteObject.createImmutable("");
 }
 catch (Exception e) {
@@ -96,11 +102,12 @@ public static void initializeProcessGlobals() {
 		try {
 		        main_subs_0._process_globals();
 main.myClass = BA.getDeviceClass ("b4j.example.main");
-clslogin.myClass = BA.getDeviceClass ("b4j.example.clslogin");
-clsservice.myClass = BA.getDeviceClass ("b4j.example.clsservice");
 clsdashboard.myClass = BA.getDeviceClass ("b4j.example.clsdashboard");
+clslogin.myClass = BA.getDeviceClass ("b4j.example.clslogin");
 clsmonitoring.myClass = BA.getDeviceClass ("b4j.example.clsmonitoring");
 clssecman.myClass = BA.getDeviceClass ("b4j.example.clssecman");
+clsservice.myClass = BA.getDeviceClass ("b4j.example.clsservice");
+clsmain.myClass = BA.getDeviceClass ("b4j.example.clsmain");
 		
         } catch (Exception e) {
 			throw new RuntimeException(e);
@@ -110,8 +117,8 @@ clssecman.myClass = BA.getDeviceClass ("b4j.example.clssecman");
  //BA.debugLineNum = 7;BA.debugLine="Sub Process_Globals";
  //BA.debugLineNum = 8;BA.debugLine="Dim srvr As Server";
 main._srvr = RemoteObject.createNew ("anywheresoftware.b4j.object.ServerWrapper");
- //BA.debugLineNum = 9;BA.debugLine="Dim base_url As String = \"http://localhost:8081/\"";
-main._base_url = BA.ObjectToString("http://localhost:8081/");
+ //BA.debugLineNum = 9;BA.debugLine="Dim url_api As String = \"http://10.211.55.2:8080\"";
+main._url_api = BA.ObjectToString("http://10.211.55.2:8080");
  //BA.debugLineNum = 10;BA.debugLine="End Sub";
 return RemoteObject.createImmutable("");
 }

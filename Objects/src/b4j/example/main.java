@@ -50,7 +50,7 @@ public static void initializeProcessGlobals() {
     }
 }public static anywheresoftware.b4a.keywords.Common __c = null;
 public static anywheresoftware.b4j.object.ServerWrapper _srvr = null;
-public static String _base_url = "";
+public static String _url_api = "";
 public static b4j.example.httputils2service _httputils2service = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
 RDebugUtils.currentModule="main";
@@ -109,13 +109,19 @@ RDebugUtils.currentLine=65553;
  //BA.debugLineNum = 65553;BA.debugLine="srvr.AddWebSocket(\"/secman\",\"clsSecman\")";
 _srvr.AddWebSocket("/secman","clsSecman");
 RDebugUtils.currentLine=65554;
- //BA.debugLineNum = 65554;BA.debugLine="srvr.Start";
+ //BA.debugLineNum = 65554;BA.debugLine="srvr.AddWebSocket(\"/main\",\"clsMain\")";
+_srvr.AddWebSocket("/main","clsMain");
+RDebugUtils.currentLine=65555;
+ //BA.debugLineNum = 65555;BA.debugLine="srvr.Start";
 _srvr.Start();
-RDebugUtils.currentLine=65556;
- //BA.debugLineNum = 65556;BA.debugLine="StartMessageLoop";
-anywheresoftware.b4a.keywords.Common.StartMessageLoop(ba);
 RDebugUtils.currentLine=65557;
- //BA.debugLineNum = 65557;BA.debugLine="End Sub";
+ //BA.debugLineNum = 65557;BA.debugLine="Log(\"Server Started at port \"& srvr.Port)";
+anywheresoftware.b4a.keywords.Common.Log("Server Started at port "+BA.NumberToString(_srvr.getPort()));
+RDebugUtils.currentLine=65559;
+ //BA.debugLineNum = 65559;BA.debugLine="StartMessageLoop";
+anywheresoftware.b4a.keywords.Common.StartMessageLoop(ba);
+RDebugUtils.currentLine=65560;
+ //BA.debugLineNum = 65560;BA.debugLine="End Sub";
 return "";
 }
 }

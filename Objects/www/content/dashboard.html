@@ -1,0 +1,59 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="block">
+				<div class="header">TOTAL REPORT</div>
+				<div class="content content-white" style="min-height: 200px;">
+					<center>
+						<p style="font-size: 100px">00</p>
+						<p style="margin-top: -20px"><b>TOTAL SEMUA LAPORAN PER TAHUN</b></p>
+					</center>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="block">
+				<div class="header">TOTAL REPORT FISIK LAPANGAN</div>
+				<div class="content content-white" style="min-height: 200px;">
+					<center>
+						<p style="font-size: 100px">00</p>
+						<p style="margin-top: -20px"><b>TOTAL LAPORAN FISIK LAPANGAN PER TAHUN</b></p>
+					</center>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="block">
+				<div class="header">TOTAL REPORT PRILAKU</div>
+				<div class="content content-white" style="min-height: 200px;">
+					<center>
+						<p style="font-size: 100px">00</p>
+						<p style="margin-top: -20px"><b>TOTAL LAPORAN PRILAKU PER TAHUN</b></p>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-9">
+			<div class="block">
+				<div class="header">GRAFIK LAPORAN BULANAN</div>
+				<div class="content content-white" style="height: 300px;"></div>
+			</div>
+		</div>
+		<div class="col-md-3">
+			<div class="block">
+				<div class="header">LIST UNIT PEMOHON</div>
+				<div class="content list list-contacts" >
+					<div id="list_unit"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="../../assets/js/script/dashboard.js"></script>
+<script type="text/javascript">  
+    $(document).ready(function () {
+        b4j_connect("/dashboard"); 
+    });
+</script>

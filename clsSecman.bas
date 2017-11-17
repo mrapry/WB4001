@@ -6,14 +6,21 @@ B4J=true
 'WebSocket class
 Sub Class_Globals
 	Private ws As WebSocket
+	Dim cls As clsService
 End Sub
 
 Public Sub Initialize
-	
+	cls.Initialize
 End Sub
 
 Private Sub WebSocket_Connected (WebSocket1 As WebSocket)
 	ws = WebSocket1
+End Sub
+
+private Sub logout_Click (Params As Object)
+	Wait For(cls.doLogout()) COMPLETE(a As String)
+	ws.RunFunction("doLogout",Null)
+	ws.Flush
 End Sub
 
 Private Sub WebSocket_Disconnected

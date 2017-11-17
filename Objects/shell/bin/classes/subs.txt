@@ -1,27 +1,76 @@
 b4j.example
 0
-5
-clslogin
-clsservice
+6
 clsdashboard
+clslogin
 clsmonitoring
 clssecman
-main,application_error,0,0,36,38
+clsservice
+clsmain
+main,application_error,0,0,39,41
 
 
 
-main,appstart,0,1,12,33
+main,appstart,0,1,12,36
 ,srvr
 
 
 main,process_globals,0,1,7,10
-,base_url
-,base_url
+,url_api
+,url_api
 
-clslogin,btn_login_click,0,0,14,36
+clsdashboard,class_globals,0,0,2,5
 
 
 
+clsdashboard,getunitlist,0,1,22,26
+main,url_api
+
+clsservice,getunit,clsservice,list2json
+clsdashboard,initialize,0,0,7,10
+main,url_api
+
+clsservice,initialize,,getunitlist,clsservice,getunit,clsservice,list2json
+clsdashboard,logout_click,0,1,16,20
+main,url_api
+
+clsservice,dologout
+clsdashboard,websocket_connected,0,0,12,14
+
+
+
+clsdashboard,websocket_disconnected,0,0,28,30
+
+
+
+clsservice,getunit,0,1,55,76
+main,url_api
+
+,list2json
+clsservice,initialize,0,0,7,9
+
+
+
+clsservice,dologout,0,1,40,52
+main,url_api
+
+
+clsservice,dologin,0,1,13,38
+main,url_api
+
+
+clsservice,class_globals,0,0,2,4
+
+
+
+clsservice,list2json,0,0,78,82
+
+
+
+clslogin,btn_login_click,0,1,14,37
+main,url_api
+
+clsservice,dologin
 clslogin,class_globals,0,0,2,8
 
 
@@ -30,79 +79,71 @@ clslogin,initialize,0,0,10,12
 
 
 clsservice,initialize
-clslogin,websocket_connected,0,0,38,40
+clslogin,websocket_connected,0,0,40,42
 
 
 
-clslogin,websocket_disconnected,0,0,42,44
+clslogin,websocket_disconnected,0,0,44,46
 
 
 
-clsservice,initialize,0,0,7,9
+clsmonitoring,class_globals,0,0,2,5
 
 
 
-clsservice,class_globals,0,0,2,4
+clsmonitoring,initialize,0,0,7,9
+
+
+clsservice,initialize
+clsmonitoring,logout_click,0,1,15,19
+main,url_api
+
+clsservice,dologout
+clsmonitoring,websocket_connected,0,0,11,13
 
 
 
-clsservice,getunit,0,1,42,44
+clsmonitoring,websocket_disconnected,0,0,21,23
 
 
 
-clsservice,login,0,1,11,40
-main,base_url
-
-
-clsdashboard,class_globals,0,0,2,4
+clssecman,class_globals,0,0,2,5
 
 
 
-clsdashboard,coba_hit_click,0,1,10,12
+clssecman,initialize,0,0,7,9
+
+
+clsservice,initialize
+clssecman,logout_click,0,1,15,19
+main,url_api
+
+clsservice,dologout
+clssecman,websocket_connected,0,0,11,13
 
 
 
-clsdashboard,initialize,0,0,6,8
+clssecman,websocket_disconnected,0,0,21,23
 
 
 
-clsdashboard,websocket_connected,0,0,14,16
+clsmain,class_globals,0,0,2,5
 
 
 
-clsdashboard,websocket_disconnected,0,0,18,20
+clsmain,initialize,0,0,7,9
+
+
+clsservice,initialize
+clsmain,logout_click,0,1,15,20
+main,url_api
+
+clsservice,dologout
+clsmain,websocket_connected,0,0,11,13
 
 
 
-clsmonitoring,class_globals,0,0,2,4
-
-
-
-clsmonitoring,initialize,0,0,6,8
-
-
-
-clsmonitoring,websocket_connected,0,0,10,12
-
-
-
-clsmonitoring,websocket_disconnected,0,0,14,16
-
-
-
-clssecman,class_globals,0,0,2,4
-
-
-
-clssecman,initialize,0,0,6,8
-
-
-
-clssecman,websocket_connected,0,0,10,12
-
-
-
-clssecman,websocket_disconnected,0,0,14,16
+clsmain,websocket_disconnected,0,0,22,24
 
 
 

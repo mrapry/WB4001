@@ -1,0 +1,34 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="block">
+				<div class="header">
+					MONITORING REPORT
+				</div>
+				<div class="content content-white">
+					<table class="table table-striped" id="table_monitoring">
+						<thead>
+							<th>NO</th>
+							<th>ID LAPORAN</th>
+							<th>KATEGORI</th>
+							<th>DESKRIPSI</th>
+							<th>PRIORITY</th>
+							<th>TANGGAL LAPOR</th>
+							<th>UNIT</th>
+							<th>STATUS</th>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="../assets/js/script/monitoring.js"></script>
+<script type="text/javascript">  
+    $(document).ready(function () {
+        b4j_connect("/monitoring"); 
+    });
+</script>

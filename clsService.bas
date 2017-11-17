@@ -13,17 +13,60 @@ Public Sub Initialize
 	
 End Sub
 
-Sub login(a As String)As ResumableSub
+
+'===================SERVICE LOGIN===================
+Sub doLogin(a As String, username As String,password As String) As ResumableSub
+	Dim result As String
+	Dim job As HttpJob
+	job.Initialize("",Me)
+	job.PostString(Main.url_api & "/login",a)
+	job.GetRequest.Timeout = 10000*60
+	
+	Wait For(job) JobDone(job As HttpJob)
+	result = job.GetString
+	If job.Success = False Then
+		job.Release
+		Return Null
+	End If
+	job.Release
+	
+	Dim js As  JSONParser
+	Dim json As JSONGenerator
+	js.Initialize(result)
+	Dim mp As Map = js.NextObject
+	If mp.Get("success")="1" Then
+		json.Initialize(mp.Get("profile"))
+		Return json.ToString
+	Else
+		Return "XX"
+	End If
+End Sub
+
+Sub doLogout()As ResumableSub
+	Dim job As HttpJob
+	job.Initialize("",Me)
+	job.PostString(Main.url_api & "/logout",Null)
+	job.GetRequest.Timeout = 10000*60
+	Wait For(job) JobDone(job As HttpJob)
+	If job.Success = False Then
+		job.Release
+		Return Null
+	End If
+	job.Release
+	Return "Login Sukses"
+End Sub
+
+'===================SERVICE DASHBOARD===================
+Sub getUnit() As ResumableSub
 	Dim result As String
 	Dim job As HttpJob
 	
 	job.Initialize("",Me)
-	job.PostString(  Main.base_url & "/login"  ,a )
+	job.PostString(Main.url_api & "/mobile/instansi",Null)
 	job.GetRequest.Timeout = 1000*10
 	
 	Wait For(job) JobDone(job As HttpJob)
 	result = job.GetString
-	
 	If job.Success = False Then
 		job.Release
 		Return Null
@@ -32,18 +75,13 @@ Sub login(a As String)As ResumableSub
 	
 	Dim js As  JSONParser
 	js.Initialize(result)
-	Dim mp As Map = js.NextObject
-	Log(mp)
-	If mp.Get("kode")="1" Then
-'		Dim list As List = mp.Get("data")
-'		Return list2json(list)
-	Else
-		Return "XX" & mp.Get("pesan")
-	End If
-	
-	Return result
+	Dim mp As Map = js.NextArray
+	Dim list As List = mp
+	Return list2json(list)
 End Sub
 
-Sub getUnit(a As String) As ResumableSub
-	
+Sub list2json(list As List) As String
+	Dim js As JSONGenerator
+	js.Initialize2(list)
+	Return js.ToString
 End Sub

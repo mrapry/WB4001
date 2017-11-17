@@ -4,3 +4,5 @@ $('#table_monitoring').DataTable({
 	"bFilter": false,
 	"bSort":false
 });
+
+refeshPage();

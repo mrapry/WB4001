@@ -1,14 +1,15 @@
 ﻿Version=5.9
 AppType=StandardJava
-NumberOfModules=5
-Module1=clsLogin
-Module2=clsService
-Module3=clsDashboard
-Module4=clsMonitoring
-Module5=clsSecman
+NumberOfModules=6
+Module1=clsDashboard
+Module2=clsLogin
+Module3=clsMonitoring
+Module4=clsSecman
+Module5=clsService
+Module6=clsMain
 Build1=Default,b4j.example
 NumberOfFiles=0
-NumberOfLibraries=9
+NumberOfLibraries=11
 Library1=jcore
 Library2=jserver
 Library3=jokhttputils2_nonui
@@ -18,6 +19,8 @@ Library6=jhttputils2
 Library7=jstringfunctions
 Library8=jokhttputils2
 Library9=jstringutils
+Library10=encryption
+Library11=byteconverter
 @EndOfDesignText@
 'Non-UI application (console / server application)
 #Region Project Attributes 
@@ -27,7 +30,7 @@ Library9=jstringutils
 
 Sub Process_Globals
 	Dim srvr As Server
-	Dim base_url As String = "http://localhost:8081/"
+	Dim url_api As String = "http://10.211.55.2:8080"
 End Sub
 
 Sub AppStart (Args() As String)
@@ -48,7 +51,10 @@ Sub AppStart (Args() As String)
 	srvr.AddWebSocket("/dashboard","clsDashboard")
 	srvr.AddWebSocket("/monitoring","clsMonitoring")
 	srvr.AddWebSocket("/secman","clsSecman")
+	srvr.AddWebSocket("/main","clsMain")
 	srvr.Start
+	
+	Log("Server Started at port "& srvr.Port)
 	
 	StartMessageLoop
 End Sub
